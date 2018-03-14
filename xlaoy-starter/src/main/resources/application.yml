@@ -1,0 +1,75 @@
+server:
+  port: 9900
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  profiles:
+      include: user,trade,sso
+      active: local
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+  datasource:
+    url: jdbc:log4jdbc:mysql://10.200.157.139:3306/wjc_local?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: dev
+    password: dev-zchz2018
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    tomcat:
+      max-active: 20
+      initial-size: 5
+      max-wait: 10000
+      max-idle: 10
+      min-idle: 5
+      time-between-eviction-runs-millis: 18800
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1
+      test-on-borrow: false
+      test-while-idle: true
+      test-on-return: false
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: none
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery:123456@127.0.0.1:9920/eureka/,http://discovery:123456@127.0.0.1:9930/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+# 熔断 HystrixCommandProperties  配置类 监控 http://m.blog.csdn.net/u012702547/article/details/78224483
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000 #断路器的超时时间,断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。
+
+# 均衡负载  DefaultClientConfigImpl  配置类
+ribbon:
+  ConnectTimeout: 250 #ribbon请求连接的超时时间
+  ReadTimeout: 6000 #请求处理的超时时间
+  OkToRetryOnAllOperations: true #对所有操作请求都进行重试
+  MaxAutoRetries: 1 #对当前实例的重试次数
+  MaxAutoRetriesNextServer: 1 #对下个实例的重试次数
+
+# 开启服务降级
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+

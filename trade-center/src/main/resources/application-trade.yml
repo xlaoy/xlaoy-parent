@@ -1,0 +1,8 @@
+swagger:
+  docket:
+    trade:
+      title: 交易模块
+      base-package: com.xlaoy.trade
+
+trade:
+  test: hahahha

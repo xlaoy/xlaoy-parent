@@ -1,0 +1,12 @@
+swagger:
+  docket:
+    user:
+      title: 用户模块
+      base-package: com.xlaoy.user
+
+xlaoy:
+  api:
+    trade:
+      username: xlaoy
+      password: 123456
+  user: zyj
