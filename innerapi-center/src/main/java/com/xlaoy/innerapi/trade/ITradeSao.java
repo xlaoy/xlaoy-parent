@@ -1,7 +1,6 @@
 package com.xlaoy.innerapi.trade;
 
 import com.xlaoy.innerapi.config.ApplactionName;
-import com.xlaoy.innerapi.config.TradeFeignConfig;
 import com.xlaoy.innerapi.trade.fallback.ITradeSaoFallBack;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,5 +1,8 @@
-package com.xlaoy.innerapi.config;
+package com.xlaoy.innerapi.trade;
 
+import com.xlaoy.innerapi.config.FeignProperties;
+import com.xlaoy.innerapi.config.RequestHeaderInterceptor;
+import com.xlaoy.innerapi.config.ResultErrorDecoder;
 import feign.Logger;
 import feign.auth.BasicAuthRequestInterceptor;
 import feign.codec.ErrorDecoder;
