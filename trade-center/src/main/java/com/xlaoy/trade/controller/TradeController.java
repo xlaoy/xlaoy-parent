@@ -34,7 +34,7 @@ public class TradeController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
-        int a = 1 / 0;
+        //int a = 1 / 0;
         return name;
     }
 
