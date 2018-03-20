@@ -26,10 +26,10 @@ public class UserController {
 
     @Value("${xlaoy.user}")
     private String name;
-
-
     @Value("${gitreponame}")
     private String gitreponame;
+    @Value("${gitrepodatabasedbpwd}")
+    private String gitrepodatabasedbpwd;
 
     @Autowired
     private ITradeSao tradeSao;
@@ -50,6 +50,12 @@ public class UserController {
     @ApiOperation(response = String.class, value = "获取名称")
     public String test03() {
         return gitreponame;
+    }
+
+    @GetMapping(value = "/test04")
+    @ApiOperation(response = String.class, value = "获取名称")
+    public String test04() {
+        return gitrepodatabasedbpwd;
     }
 
 }
