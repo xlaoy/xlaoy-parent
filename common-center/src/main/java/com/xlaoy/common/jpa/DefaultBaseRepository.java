@@ -1,6 +1,5 @@
 package com.xlaoy.common.jpa;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xlaoy.common.exception.BizException;
 import com.xlaoy.common.exception.MethodCanNotUseException;
 import org.slf4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
