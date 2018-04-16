@@ -5,7 +5,7 @@ server:
 
 spring:
   profiles:
-    include: user,trade,sso
+    include: user,trade
     active: dev
   http:
     encoding:
