@@ -29,7 +29,7 @@ public class UserGuidFilter extends OncePerRequestFilter {
                 UserGuidHolder.setGuid(guid);
             }
         } catch (Exception e) {
-            logger.error("获取guid异常");
+            logger.error("获取guid异常", e);
         }
         filterChain.doFilter(request, response);
     }

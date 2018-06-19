@@ -1,22 +1,17 @@
 package com.xlaoy.user.controller;
 
-import com.xlaoy.innerapi.trade.ITradeSao;
+import com.xlaoy.innerapi.trade.sao.ITradeSao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Binary Wang(https://github.com/binarywang)
  */
-@RefreshScope
 @Api(tags = "用户 API")
 @RestController
 @RequestMapping("/user")
@@ -43,7 +38,7 @@ public class UserController {
     @GetMapping(value = "/test02")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test02() {
-        return tradeSao.getHH();
+        return tradeSao.test01();
     }
 
     @GetMapping(value = "/test03")

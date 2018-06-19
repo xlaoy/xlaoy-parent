@@ -12,9 +12,9 @@ spring:
       charset: UTF-8
       force: true
   datasource:
-    url: jdbc:log4jdbc:mysql://10.200.157.139:3306/wjc_local?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-    username: dev
-    password: dev-zchz2018
+    url: jdbc:log4jdbc:mysql://10.200.157.139:3306/xiehua-dev?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+        username: dev01
+        password: Dev2018
     driver-class-name: net.sf.log4jdbc.DriverSpy
     tomcat:
       max-active: 20
@@ -48,9 +48,9 @@ hystrix:
 ribbon:
   ConnectTimeout: 250 #ribbon请求连接的超时时间
   ReadTimeout: 6000 #请求处理的超时时间
-  OkToRetryOnAllOperations: true #对所有操作请求都进行重试
-  MaxAutoRetries: 1 #对当前实例的重试次数
-  MaxAutoRetriesNextServer: 1 #对下个实例的重试次数
+  #OkToRetryOnAllOperations: true #对所有操作请求都进行重试
+  #MaxAutoRetries: 1 #对当前实例的重试次数
+  #MaxAutoRetriesNextServer: 1 #对下个实例的重试次数
 
 # 开启服务降级
 feign:

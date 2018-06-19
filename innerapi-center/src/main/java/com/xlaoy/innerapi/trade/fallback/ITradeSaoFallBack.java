@@ -1,6 +1,6 @@
 package com.xlaoy.innerapi.trade.fallback;
 
-import com.xlaoy.innerapi.trade.ITradeSao;
+import com.xlaoy.innerapi.trade.sao.ITradeSao;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ITradeSaoFallBack implements ITradeSao {
 
     @Override
-    public String getHH() {
-        return "error";
+    public String test01() {
+        return "";
     }
 }
