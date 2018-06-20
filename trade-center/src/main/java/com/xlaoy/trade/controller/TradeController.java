@@ -1,5 +1,6 @@
 package com.xlaoy.trade.controller;
 
+import com.xlaoy.common.exception.BizException;
 import com.xlaoy.common.support.UserGuidHolder;
 import com.xlaoy.innerapi.trade.api.ITradeController;
 import io.swagger.annotations.Api;
@@ -32,8 +33,8 @@ public class TradeController implements ITradeController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
-        //int a = 1 / 0;
-        return name;
+        throw new BizException("卧槽。。。");
+        //return name;
     }
 
 

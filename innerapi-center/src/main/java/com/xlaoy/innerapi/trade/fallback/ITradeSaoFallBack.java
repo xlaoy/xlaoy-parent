@@ -11,6 +11,6 @@ public class ITradeSaoFallBack implements ITradeSao {
 
     @Override
     public String test01() {
-        return "";
+        return "test01-fallback";
     }
 }

@@ -1,11 +1,16 @@
 package com.xlaoy.innerapi.config;
 
 import com.netflix.hystrix.exception.HystrixBadRequestException;
+import com.xlaoy.common.exception.BizException;
+import com.xlaoy.common.utils.JSONUtil;
 import feign.FeignException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
+
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/3/13 0013.
@@ -27,7 +32,13 @@ public class ResultErrorDecoder implements ErrorDecoder {
         FeignException feignException = FeignException.errorStatus(methodKey, response);
         logger.error("feign异常", feignException);
         if(response.status() >= 400 && response.status() <= 500){
-            return new HystrixBadRequestException("feign response status " + response.status());
+            String message = feignException.getMessage();
+            if(!StringUtils.isEmpty(message)) {
+                String json = message.split("content:\n")[1];
+                Map<String, String> map = JSONUtil.fromJsonToMap(json);
+                message = map.get("message");
+            }
+            return new HystrixBadRequestException(message);
         }
         return feignException;
     }

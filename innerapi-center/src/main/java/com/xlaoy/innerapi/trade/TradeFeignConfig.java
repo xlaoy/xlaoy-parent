@@ -36,4 +36,9 @@ public class TradeFeignConfig {
         return new ResultErrorDecoder();
     }
 
+    @Bean
+    Logger.Level feignLoggerLevel() {
+        return Logger.Level.FULL;
+    }
+
 }
