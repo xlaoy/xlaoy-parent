@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(tags = "交易 API")
 @RestController
-@RequestMapping(ITradeController.BASE_REQUEST)
 public class TradeController implements ITradeController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -25,7 +24,6 @@ public class TradeController implements ITradeController {
     private String name;
 
     @Override
-    @GetMapping(value = ITradeController.TEST_01)
     @ApiOperation(response = String.class, value = "获取名称")
     public String test01() {
         logger.info(">>>>>>>>>" + UserGuidHolder.getGuid());

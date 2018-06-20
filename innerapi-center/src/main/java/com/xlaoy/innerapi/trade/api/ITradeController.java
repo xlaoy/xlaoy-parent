@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 public interface ITradeController {
 
-    public static final String BASE_REQUEST = "/trade";
-
-    public static final String TEST_01 = "/test01";
-
-    @GetMapping(value = BASE_REQUEST + TEST_01)
+    @GetMapping("/trade/test01")
     String test01();
 }
