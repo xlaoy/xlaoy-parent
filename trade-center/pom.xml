@@ -37,6 +37,7 @@
             <groupId>com.spring4all</groupId>
             <artifactId>spring-boot-starter-swagger</artifactId>
             <version>1.5.1.RELEASE</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
     </dependencies>
