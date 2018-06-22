@@ -8,50 +8,26 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Binary Wang(https://github.com/binarywang)
  */
-@Api(tags = "用户 API")
+@Api(tags = "用户Other API")
 @RestController
-@RequestMapping("/user")
-@RefreshScope
-public class UserController {
+@RequestMapping("/user_other")
+public class UserOtherController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("${xlaoy.user}")
-    private String name;
-    @Value("${gitreponame}")
-    private String gitreponame;
     @Value("${gitrepodatabasedbpwd}")
     private String gitrepodatabasedbpwd;
-
-    @Autowired
-    private ITradeSao tradeSao;
 
     @GetMapping(value = "/test01")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test01() {
-        return name;
-    }
-
-    @GetMapping(value = "/test02")
-    @ApiOperation(response = String.class, value = "获取名称")
-    public String test02() {
-        return tradeSao.test01();
-    }
-
-    @GetMapping(value = "/test03")
-    @ApiOperation(response = String.class, value = "获取名称")
-    public String test03() {
-        return gitreponame;
-    }
-
-    @GetMapping(value = "/test04")
-    @ApiOperation(response = String.class, value = "获取名称")
-    public String test04() {
         return gitrepodatabasedbpwd;
     }
 

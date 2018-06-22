@@ -64,4 +64,20 @@ feign:
 #    response:
 #      enabled: true
 
+#打开actuator的所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+swagger:
+  docket:
+    actuate:
+      title: actuate模块
+      base-package: org.springframework.boot.actuate
+    app:
+      title: 系统应用模块
+      base-package: com.xlaoy.starter
+
 
