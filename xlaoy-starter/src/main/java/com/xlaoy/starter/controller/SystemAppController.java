@@ -7,10 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Administrator on 2018/6/22 0022.
@@ -25,10 +23,19 @@ public class SystemAppController {
     @Autowired
     private ApplicationInfoManager infoManager;
 
+    @Autowired
+    Environment env;
+
     @GetMapping("/getInstanceInfo")
     @ApiOperation(response = String.class, value = "获取服务信息")
     public InstanceInfo getInstanceInfo() {
         return infoManager.getInfo();
+    }
+
+    @GetMapping("/getProperty")
+    @ApiOperation(response = String.class, value = "获取服务信息")
+    public String getProperty(@RequestParam("key") String key) {
+        return env.getProperty(key);
     }
 
     @PostMapping("/setInstanceUp")
