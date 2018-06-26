@@ -1,18 +1,22 @@
 package com.xlaoy.common.utils;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
+import com.xlaoy.common.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -36,6 +40,9 @@ public final class JSONUtil {
         javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(Java8TimeUtil.YYYY_MM_DD)));
         javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(Java8TimeUtil.HH_MM_SS)));
         mapper.registerModule(javaTimeModule);
+        mapper.setDateFormat(new SimpleDateFormat(Java8TimeUtil.YYYY_MM_DD_HH_MM_SS));
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        mapper.configure(SerializationFeature.INDENT_OUTPUT, Boolean.TRUE);
     }
 
     public static ObjectMapper getObjectMapper() {
@@ -47,7 +54,7 @@ public final class JSONUtil {
             return mapper.writeValueAsString(object);
         } catch (IOException e) {
             logger.error("josn解析错误", e);
-            return null;
+            throw new BizException("josn解析错误");
         }
     }
 
@@ -59,7 +66,7 @@ public final class JSONUtil {
             return (T) mapper.readValue(jsonString, clazz);
         } catch (IOException e) {
             logger.error("josn解析错误", e);
-            return null;
+            throw new BizException("josn解析错误");
         }
     }
 
@@ -72,7 +79,7 @@ public final class JSONUtil {
             return mapper.readValue(jsonString, javaType);
         } catch (IOException e) {
             logger.error("josn解析错误", e);
-            return null;
+            throw new BizException("josn解析错误");
         }
     }
 
@@ -81,11 +88,10 @@ public final class JSONUtil {
             return null;
         }
         try {
-            return mapper.readValue(jsonString, new TypeReference<Map<K, V>>() {
-            });
+            return mapper.readValue(jsonString, new TypeReference<Map<K, V>>() {});
         } catch (IOException e) {
             logger.error("josn解析错误", e);
-            return null;
+            throw new BizException("josn解析错误");
         }
     }
 
