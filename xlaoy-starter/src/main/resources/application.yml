@@ -12,9 +12,9 @@ spring:
       charset: UTF-8
       force: true
   datasource:
-    url: jdbc:log4jdbc:mysql://10.200.157.139:3306/xiehua-dev?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-    username: dev01
-    password: Dev2018
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
     driver-class-name: net.sf.log4jdbc.DriverSpy
     tomcat:
       max-active: 20

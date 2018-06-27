@@ -23,6 +23,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserGuidFilter userGuidFilter;
+    @Autowired
+    private ApiAccessDeniedHandler apiAccessDeniedHandler;
+    @Autowired
+    private ApiAuthenticationEntryPoint apiAuthenticationEntryPoint;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -40,7 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .addFilterAfter(userGuidFilter, BasicAuthenticationFilter.class)
             .authorizeRequests()
-            .anyRequest().hasRole(SYSTEM_API_ACCESS_ROLE);
+            .anyRequest().hasRole(SYSTEM_API_ACCESS_ROLE)
+            .and()
+            .exceptionHandling()
+            .authenticationEntryPoint(apiAuthenticationEntryPoint)
+            .accessDeniedHandler(apiAccessDeniedHandler);
     }
 
     private class SimplePasswordEncoder implements PasswordEncoder {
