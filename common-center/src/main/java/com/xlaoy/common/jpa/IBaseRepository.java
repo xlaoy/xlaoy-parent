@@ -123,14 +123,14 @@ public interface IBaseRepository<Entity> extends JpaRepository<Entity, Integer>,
      * @param id
      * @return 删除成功返回Entity，删除错误返回null
      */
-    Entity remove(Integer id) throws IOException;
+    void remove(Integer id);
 
     /**
      * 删除
      * @param entityList
      * @return
      */
-    void remove(List<Entity> entityList) throws IOException;
+    void remove(List<Entity> entityList);
 
     /**
      * 分页查询

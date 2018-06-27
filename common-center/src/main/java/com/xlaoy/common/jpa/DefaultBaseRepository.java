@@ -250,17 +250,16 @@ public class DefaultBaseRepository<Entity extends AbstractEntity> extends Simple
 
     @Transactional
     @Override
-    public Entity remove(Integer id) throws IOException{
+    public void remove(Integer id){
         Entity entity = find(id);
         if(entity != null) {
             List<Entity> entities = Arrays.asList(entity);
             removeDataStrategy(entities);
             super.delete(entity);
         }
-        return entity;
     }
 
-    private void removeDataStrategy(List<Entity> entities) throws IOException{
+    private void removeDataStrategy(List<Entity> entities){
         if(CollectionUtils.isEmpty(entities)) {
             return;
         }
@@ -268,7 +267,7 @@ public class DefaultBaseRepository<Entity extends AbstractEntity> extends Simple
 
     @Transactional
     @Override
-    public void remove(List<Entity> entities) throws IOException{
+    public void remove(List<Entity> entities){
         removeDataStrategy(entities);
         super.deleteInBatch(entities);
     }
