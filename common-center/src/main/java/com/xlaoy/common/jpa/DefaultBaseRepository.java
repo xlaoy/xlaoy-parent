@@ -113,7 +113,12 @@ public class DefaultBaseRepository<Entity extends AbstractEntity> extends Simple
             public Predicate toPredicate(Root<Entity> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
                 Predicate predicate = builder.conjunction();
                 for(ConditionMap cond : condition.getConditionMapList()) {
-                    Attribute<Entity, ?> attribute = entityType.getDeclaredAttribute(cond.getField());
+                    Attribute<?, ?> attribute = null;
+                    try {
+                        attribute = entityType.getDeclaredAttribute(cond.getField());
+                    } catch (Exception e) {
+                        attribute = entityType.getSupertype().getDeclaredAttribute(cond.getField());
+                    }
                     switch (cond.getSignEnum()) {
                         case eq: predicate.getExpressions().add(builder.equal(root.get(cond.getField()).as(attribute.getJavaType()), cond.getValue())); break;
                         case lt: predicate.getExpressions().add(builder.lessThan(root.get(cond.getField()), (Comparable)cond.getValue())); break;
