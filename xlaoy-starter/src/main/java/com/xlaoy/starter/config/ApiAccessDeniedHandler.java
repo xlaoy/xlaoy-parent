@@ -1,8 +1,10 @@
 package com.xlaoy.starter.config;
 
 
+import com.xlaoy.common.support.JsonResponseWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -22,9 +24,11 @@ public class ApiAccessDeniedHandler implements AccessDeniedHandler {
                        HttpServletResponse response,
                        AccessDeniedException accessDeniedException) throws IOException, ServletException {
 
-        logger.error("访问无权限,url={}", request.getRequestURI());
+        logger.error("系统权限不足,url={}", request.getRequestURI());
 
-        response.sendError(HttpServletResponse.SC_FORBIDDEN, "Forbidden");
+        JsonResponseWriter.response(response)
+                .status(HttpStatus.FORBIDDEN)
+                .message("系统权限不足").print();
     }
 
 }

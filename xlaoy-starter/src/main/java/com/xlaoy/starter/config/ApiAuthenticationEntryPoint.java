@@ -1,7 +1,9 @@
 package com.xlaoy.starter.config;
 
+import com.xlaoy.common.support.JsonResponseWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -21,8 +23,10 @@ public class ApiAuthenticationEntryPoint implements AuthenticationEntryPoint, Se
                          HttpServletResponse response,
                          AuthenticationException authException) throws IOException {
 
-        logger.error("访问无认证,url={}", request.getRequestURI());
+        logger.error("系统未认证,url={}", request.getRequestURI());
 
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+        JsonResponseWriter.response(response)
+                .status(HttpStatus.UNAUTHORIZED)
+                .message("系统未认证").print();
     }
 }
