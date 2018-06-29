@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(tags = "用户Other API")
 @RestController
-@RequestMapping("/user_other")
 public class UserOtherController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -25,7 +24,7 @@ public class UserOtherController {
     @Value("${gitrepodatabasedbpwd}")
     private String gitrepodatabasedbpwd;
 
-    @GetMapping(value = "/test01")
+    @GetMapping(value = "/user_other/test01")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test01() {
         return gitrepodatabasedbpwd;

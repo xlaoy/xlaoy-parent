@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(tags = "用户 API")
 @RestController
-@RequestMapping("/user")
 @RefreshScope
 public class UserController {
 
@@ -31,25 +30,25 @@ public class UserController {
     @Autowired
     private ITradeSao tradeSao;
 
-    @GetMapping(value = "/test01")
+    @GetMapping(value = "/user/test01")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test01() {
         return name;
     }
 
-    @GetMapping(value = "/test02")
+    @GetMapping(value = "/user/test02")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test02() {
         return tradeSao.test01();
     }
 
-    @GetMapping(value = "/test03")
+    @GetMapping(value = "/user/test03")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test03() {
         return gitreponame;
     }
 
-    @GetMapping(value = "/test04")
+    @GetMapping(value = "/user/test04")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test04() {
         return gitrepodatabasedbpwd;

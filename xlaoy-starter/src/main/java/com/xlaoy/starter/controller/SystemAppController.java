@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(tags = "系统设置 API")
 @RestController
-@RequestMapping("/system_app")
 public class SystemAppController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -26,25 +25,25 @@ public class SystemAppController {
     @Autowired
     Environment env;
 
-    @GetMapping("/getInstanceInfo")
+    @GetMapping("/system_app/getInstanceInfo")
     @ApiOperation(response = String.class, value = "获取服务信息")
     public InstanceInfo getInstanceInfo() {
         return infoManager.getInfo();
     }
 
-    @GetMapping("/getProperty")
+    @GetMapping("/system_app/getProperty")
     @ApiOperation(response = String.class, value = "获取服务信息")
     public String getProperty(@RequestParam("key") String key) {
         return env.getProperty(key);
     }
 
-    @PostMapping("/setInstanceUp")
+    @PostMapping("/system_app/setInstanceUp")
     @ApiOperation(response = String.class, value = "设置服务上线")
     public void setInstanceUp() {
         infoManager.setInstanceStatus(InstanceInfo.InstanceStatus.UP);
     }
 
-    @PostMapping("/setInstanceDown")
+    @PostMapping("/system_app/setInstanceDown")
     @ApiOperation(response = String.class, value = "设置服务下线")
     public void setInstanceDown() {
         infoManager.setInstanceStatus(InstanceInfo.InstanceStatus.DOWN);
