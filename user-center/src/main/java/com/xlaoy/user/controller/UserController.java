@@ -1,5 +1,6 @@
 package com.xlaoy.user.controller;
 
+import com.xlaoy.common.support.UserGuidHolder;
 import com.xlaoy.innerapi.trade.sao.ITradeSao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,6 +34,7 @@ public class UserController {
     @GetMapping(value = "/user/test01")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test01() {
+        logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
         return name;
     }
 
