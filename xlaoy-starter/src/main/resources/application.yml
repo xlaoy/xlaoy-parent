@@ -79,5 +79,3 @@ swagger:
     app:
       title: 系统应用模块
       base-package: com.xlaoy.starter
-
-

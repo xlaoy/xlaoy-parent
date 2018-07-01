@@ -6,4 +6,8 @@ package com.xlaoy.common.config;
 public class SSOConstants {
 
     public static final String JWT_TOKEN = "jwttoken";
+
+    public static final String GUID = "guid";
+
+    public static final String ROLES = "roles";
 }

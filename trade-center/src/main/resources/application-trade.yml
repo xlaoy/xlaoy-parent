@@ -3,6 +3,13 @@ swagger:
     trade:
       title: 交易模块
       base-package: com.xlaoy.trade
+      global-operation-parameters: [{
+        "name": "guid",
+        "modelRef": "String",
+        "parameterType": "header",
+        "required": "false"
+      }]
+
 
 trade:
   test: hahahha

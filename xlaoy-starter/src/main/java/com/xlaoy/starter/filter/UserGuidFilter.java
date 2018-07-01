@@ -1,5 +1,6 @@
 package com.xlaoy.starter.filter;
 
+import com.xlaoy.common.config.SSOConstants;
 import com.xlaoy.common.support.UserGuidHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class UserGuidFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
-            String guid = request.getHeader("guid");
+            String guid = request.getHeader(SSOConstants.GUID);
             if(!StringUtils.isEmpty(guid)) {
                 UserGuidHolder.setGuid(guid);
             }

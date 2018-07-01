@@ -3,6 +3,13 @@ swagger:
     user:
       title: 用户模块
       base-package: com.xlaoy.user
+      global-operation-parameters: [{
+        "name": "guid",
+        "modelRef": "String",
+        "parameterType": "header",
+        "required": "false"
+      }]
+
 
 xlaoy:
   api:
