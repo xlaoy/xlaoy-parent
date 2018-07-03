@@ -4,6 +4,7 @@ import com.netflix.hystrix.exception.HystrixBadRequestException;
 import com.xlaoy.common.exception.BizException;
 import com.xlaoy.common.utils.JSONUtil;
 import feign.FeignException;
+import feign.Request;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import org.slf4j.Logger;
@@ -19,6 +20,8 @@ public class ResultErrorDecoder implements ErrorDecoder {
 
     private Logger logger = LoggerFactory.getLogger(ResultErrorDecoder.class);
 
+    private static final String SPLIT = "; content:\n";
+
     /**
      * 对于restful抛出的4xx的错误，也许大部分是业务异常，并不是服务提供方的异常
      * 因此在进行feign client调用的时候，需要进行errorDecoder去处理，
@@ -30,13 +33,14 @@ public class ResultErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String methodKey, Response response) {
         FeignException feignException = FeignException.errorStatus(methodKey, response);
-        logger.error("feign异常", feignException);
+        Request request = response.request();
+        logger.error("FeignException异常，url={{}}, exception=【{}】", request.url(), feignException.getMessage());
         if(response.status() >= 400 && response.status() <= 500){
             String message = feignException.getMessage();
             if(!StringUtils.isEmpty(message)) {
-                String json = message.split("content:\n")[1];
+                String json = message.split(SPLIT)[1];
                 Map<String, String> map = JSONUtil.fromJsonToMap(json);
-                message = map.get("message");
+                message = StringUtils.isEmpty(map.get("message")) ? "系统异常" : map.get("message");
             }
             return new HystrixBadRequestException(message);
         }

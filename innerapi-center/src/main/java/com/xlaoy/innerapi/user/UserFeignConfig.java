@@ -1,4 +1,4 @@
-package com.xlaoy.innerapi.trade;
+package com.xlaoy.innerapi.user;
 
 import com.xlaoy.common.config.ApiBasicAuthProperties;
 import com.xlaoy.innerapi.config.ApplactionName;
@@ -16,14 +16,14 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties(ApiBasicAuthProperties.class)
-public class TradeFeignConfig {
+public class UserFeignConfig {
 
     @Autowired
     private ApiBasicAuthProperties apiBasicAuthProperties;
 
     @Bean
     public BasicAuthRequestInterceptor basicAuthRequestInterceptor(){
-        ApiBasicAuthProperties.BasicAuthInfo basicAuthInfo = apiBasicAuthProperties.getServices().get(ApplactionName.TRADE_SERVER);
+        ApiBasicAuthProperties.BasicAuthInfo basicAuthInfo = apiBasicAuthProperties.getServices().get(ApplactionName.USER_SERVER);
         return new BasicAuthRequestInterceptor(basicAuthInfo.getUsername(), basicAuthInfo.getPassword());
     }
 

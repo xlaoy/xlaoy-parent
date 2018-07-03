@@ -41,8 +41,7 @@ hystrix:
         timeout:
           enabled: true
         isolation:
-          thread:
-            timeoutInMilliseconds: 10000 #断路器的超时时间,断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。
+          strategy: SEMAPHORE
 
 # 均衡负载  DefaultClientConfigImpl  配置类
 ribbon:
@@ -63,6 +62,12 @@ feign:
 #      min-request-size: 2048
 #    response:
 #      enabled: true
+
+apibasicauth:
+  services:
+    xlaoy-server:
+      username: xlaoy
+      password: 123456
 
 #打开actuator的所有端点
 management:

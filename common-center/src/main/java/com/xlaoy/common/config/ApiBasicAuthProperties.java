@@ -1,31 +1,24 @@
-package com.xlaoy.innerapi.config;
+package com.xlaoy.common.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/2/23 0023.
  */
-@ConfigurationProperties(prefix = "xlaoy.api")
-public class FeignProperties {
+@ConfigurationProperties(prefix = "apibasicauth")
+public class ApiBasicAuthProperties {
 
-    private BasicAuthInfo trade;
+    private Map<String, BasicAuthInfo> services = new HashMap<>();
 
-    private BasicAuthInfo user;
-
-    public BasicAuthInfo getTrade() {
-        return trade;
+    public Map<String, BasicAuthInfo> getServices() {
+        return services;
     }
 
-    public void setTrade(BasicAuthInfo trade) {
-        this.trade = trade;
-    }
-
-    public BasicAuthInfo getUser() {
-        return user;
-    }
-
-    public void setUser(BasicAuthInfo user) {
-        this.user = user;
+    public void setServices(Map<String, BasicAuthInfo> services) {
+        this.services = services;
     }
 
     public static class BasicAuthInfo {

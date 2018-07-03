@@ -12,8 +12,4 @@ swagger:
 
 
 xlaoy:
-  api:
-    trade:
-      username: xlaoy
-      password: 123456
   user: zyj

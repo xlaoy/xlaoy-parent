@@ -1,7 +1,9 @@
 package com.xlaoy.user.controller;
 
+import com.xlaoy.common.exception.BizException;
 import com.xlaoy.common.support.UserGuidHolder;
 import com.xlaoy.innerapi.trade.sao.ITradeSao;
+import com.xlaoy.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -30,29 +32,35 @@ public class UserController {
 
     @Autowired
     private ITradeSao tradeSao;
+    @Autowired
+    private UserService userService;
 
     @GetMapping(value = "/user/test01")
     @ApiOperation(response = String.class, value = "获取名称")
-    public String test01() {
+    public String test01(@RequestParam("heheda") String heheda) {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
+        userService.test01();
         return name;
     }
 
     @GetMapping(value = "/user/test02")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test02() {
+        logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
         return tradeSao.test01();
     }
 
     @GetMapping(value = "/user/test03")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test03() {
+        logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
         return gitreponame;
     }
 
     @GetMapping(value = "/user/test04")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test04() {
+        logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
         return gitrepodatabasedbpwd;
     }
 

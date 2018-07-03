@@ -6,4 +6,6 @@ package com.xlaoy.innerapi.config;
 public class ApplactionName {
 
     public static final String TRADE_SERVER = "xlaoy-server";
+
+    public static final String USER_SERVER = "xlaoy-server";
 }

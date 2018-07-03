@@ -27,7 +27,7 @@ public class TradeController implements ITradeController {
     @Override
     @ApiOperation(response = String.class, value = "获取名称")
     public String test01() {
-        logger.info(">>>>>>>>>" + UserGuidHolder.getGuid());
+        logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
         /*try {
             Thread.sleep(6500);
         } catch (InterruptedException e) {
