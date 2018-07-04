@@ -2,6 +2,7 @@ package com.xlaoy.user.controller;
 
 import com.xlaoy.common.exception.BizException;
 import com.xlaoy.common.support.UserGuidHolder;
+import com.xlaoy.innerapi.config.BizHystrixBadRequestException;
 import com.xlaoy.innerapi.trade.sao.ITradeSao;
 import com.xlaoy.user.service.UserService;
 import io.swagger.annotations.Api;
@@ -47,7 +48,16 @@ public class UserController {
     @ApiOperation(response = String.class, value = "获取名称")
     public String test02() {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
-        return tradeSao.test01();
+        try {
+            tradeSao.test01();
+        } catch (BizHystrixBadRequestException e) {
+            if(e.getErrorKey().equals("1001")) {
+                logger.info("尼玛海");
+            } else {
+                logger.info("好吧");
+            }
+        }
+        return "qqq";
     }
 
     @GetMapping(value = "/user/test03")

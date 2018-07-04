@@ -91,9 +91,6 @@ public class DefaultBaseRepository<Entity extends AbstractEntity> extends Simple
 
     @Override
     public List<Entity> findByCondition(QueryCondition condition) {
-        if(condition.getSize() == 0) {
-            condition.limit(50);
-        }
         Specification<Entity> specification = getSpecification(condition);
         Pageable pageable;
         if(condition.getSort() != null) {

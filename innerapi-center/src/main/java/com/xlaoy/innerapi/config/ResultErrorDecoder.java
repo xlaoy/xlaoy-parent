@@ -2,6 +2,7 @@ package com.xlaoy.innerapi.config;
 
 import com.netflix.hystrix.exception.HystrixBadRequestException;
 import com.xlaoy.common.exception.BizException;
+import com.xlaoy.common.exception.ExceptionResponse;
 import com.xlaoy.common.utils.JSONUtil;
 import feign.FeignException;
 import feign.Request;
@@ -34,15 +35,19 @@ public class ResultErrorDecoder implements ErrorDecoder {
     public Exception decode(String methodKey, Response response) {
         FeignException feignException = FeignException.errorStatus(methodKey, response);
         Request request = response.request();
-        logger.error("FeignException异常，url={{}}, exception=【{}】", request.url(), feignException.getMessage());
+        logger.error("FeignException异常，url={{}}, exception=[{}]", request.url(), feignException.getMessage());
         if(response.status() >= 400 && response.status() <= 500){
+            ExceptionResponse exceptionResponse = new ExceptionResponse(response.status(), "系统异常");
             String message = feignException.getMessage();
             if(!StringUtils.isEmpty(message)) {
                 String json = message.split(SPLIT)[1];
-                Map<String, String> map = JSONUtil.fromJsonToMap(json);
-                message = StringUtils.isEmpty(map.get("message")) ? "系统异常" : map.get("message");
+                exceptionResponse = JSONUtil.fromJson(json, ExceptionResponse.class);
             }
-            return new HystrixBadRequestException(message);
+            if(!StringUtils.isEmpty(exceptionResponse.getErrorKey())) {
+                return new BizHystrixBadRequestException(exceptionResponse.getErrorKey(), exceptionResponse.getMessage());
+            } else {
+                return new BizHystrixBadRequestException(exceptionResponse.getMessage());
+            }
         }
         return feignException;
     }

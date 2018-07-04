@@ -12,7 +12,7 @@ public class ExceptionResponse implements Serializable{
 
     private String message;
 
-    private Map<String, String> bizData;
+    private String errorKey;
 
     public ExceptionResponse() {
 
@@ -23,10 +23,10 @@ public class ExceptionResponse implements Serializable{
         this.message = message;
     }
 
-    public ExceptionResponse(Integer code, String message, Map<String, String> bizData) {
+    public ExceptionResponse(Integer code, String message, String errorKey) {
         this.code = code;
         this.message = message;
-        this.bizData = bizData;
+        this.errorKey = errorKey;
     }
 
 }
