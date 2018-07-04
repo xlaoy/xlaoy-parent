@@ -17,6 +17,11 @@ public class ApiBasicAuthProperties {
         return services;
     }
 
+    public BasicAuthInfo getService(String serviceId) {
+        Map<String, BasicAuthInfo> map = getServices();
+        return map.get(serviceId);
+    }
+
     public void setServices(Map<String, BasicAuthInfo> services) {
         this.services = services;
     }

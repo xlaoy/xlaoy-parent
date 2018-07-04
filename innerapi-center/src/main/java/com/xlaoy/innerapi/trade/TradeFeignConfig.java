@@ -23,7 +23,7 @@ public class TradeFeignConfig {
 
     @Bean
     public BasicAuthRequestInterceptor basicAuthRequestInterceptor(){
-        ApiBasicAuthProperties.BasicAuthInfo basicAuthInfo = apiBasicAuthProperties.getServices().get(ApplactionName.TRADE_SERVER);
+        ApiBasicAuthProperties.BasicAuthInfo basicAuthInfo = apiBasicAuthProperties.getService(ApplactionName.TRADE_SERVER);
         return new BasicAuthRequestInterceptor(basicAuthInfo.getUsername(), basicAuthInfo.getPassword());
     }
 

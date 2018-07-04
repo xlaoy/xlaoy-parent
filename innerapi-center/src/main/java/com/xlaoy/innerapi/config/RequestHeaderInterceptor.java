@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by Administrator on 2018/2/23 0023.
  */
-@Configuration
 public class RequestHeaderInterceptor implements RequestInterceptor {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
