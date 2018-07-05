@@ -42,10 +42,14 @@ hystrix:
           enabled: true
         isolation:
           strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 10000
+          semaphore:
+            maxConcurrentRequests: 50
 
 # 均衡负载  DefaultClientConfigImpl  配置类
 ribbon:
-  ConnectTimeout: 250 #ribbon请求连接的超时时间
+  ConnectTimeout: 1000 #ribbon请求连接的超时时间
   ReadTimeout: 6000 #请求处理的超时时间
   #OkToRetryOnAllOperations: true #对所有操作请求都进行重试
   #MaxAutoRetries: 1 #对当前实例的重试次数

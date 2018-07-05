@@ -4,6 +4,7 @@ import com.xlaoy.common.config.ApiBasicAuthProperties;
 import com.xlaoy.innerapi.config.ApplactionName;
 import com.xlaoy.innerapi.config.RequestHeaderInterceptor;
 import com.xlaoy.innerapi.config.ResultErrorDecoder;
+import feign.Logger;
 import feign.auth.BasicAuthRequestInterceptor;
 import feign.codec.ErrorDecoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class TradeFeignConfig {
     @Bean
     public ErrorDecoder errorDecoder(){
         return new ResultErrorDecoder();
+    }
+
+    @Bean
+    Logger.Level feignLoggerLevel() {
+        return Logger.Level.FULL;
     }
 
 }
