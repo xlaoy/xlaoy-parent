@@ -1,4 +1,4 @@
-package com.xlaoy.common.config;
+package com.xlaoy.common.constants;
 
 /**
  * Created by Administrator on 2018/6/27 0027.

@@ -1,6 +1,6 @@
 package com.xlaoy.starter.filter;
 
-import com.xlaoy.common.config.SSOConstants;
+import com.xlaoy.common.constants.SSOConstants;
 import com.xlaoy.common.support.UserGuidHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
