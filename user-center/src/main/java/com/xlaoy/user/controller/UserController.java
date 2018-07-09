@@ -3,6 +3,7 @@ package com.xlaoy.user.controller;
 import com.xlaoy.common.support.UserGuidHolder;
 import com.xlaoy.innerapi.trade.sao.ITradeSao;
 import com.xlaoy.user.config.RefreshValue;
+import com.xlaoy.user.dto.UserDTO;
 import com.xlaoy.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -61,6 +62,12 @@ public class UserController {
     public String test04() {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
         return gitrepodatabasedbpwd;
+    }
+
+    @PostMapping(value = "/user/register")
+    @ApiOperation(response = void.class, value = "注册用户")
+    public void register(@RequestBody UserDTO userDTO) {
+        userService.register(userDTO);
     }
 
 }
