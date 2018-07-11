@@ -18,6 +18,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class StarterApplaction {
 
     public static void main(String[] args) {
-        SpringApplication.run(StarterApplaction.class, args);
+        SpringApplication springApplication = new SpringApplication(StarterApplaction.class);
+        springApplication.addListeners(new ApplicationSetup());
+        springApplication.run(args);
     }
+
 }
