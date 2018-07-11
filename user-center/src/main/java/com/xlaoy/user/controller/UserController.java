@@ -70,4 +70,10 @@ public class UserController {
         userService.register(userDTO);
     }
 
+    @PostMapping(value = "/user/rabbit")
+    @ApiOperation(response = void.class, value = "注册用户")
+    public void rabbit() {
+        userService.rabbit();
+    }
+
 }
