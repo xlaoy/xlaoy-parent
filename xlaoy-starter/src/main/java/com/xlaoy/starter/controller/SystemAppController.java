@@ -25,27 +25,27 @@ public class SystemAppController {
     @Autowired
     Environment env;
 
-    @GetMapping("/system_app/getInstanceInfo")
+    @GetMapping("/system_app/get_instance_info")
     @ApiOperation(response = String.class, value = "获取服务信息")
     public InstanceInfo getInstanceInfo() {
         return infoManager.getInfo();
     }
 
-    @GetMapping("/system_app/getProperty")
+    @GetMapping("/system_app/get_property")
     @ApiOperation(response = String.class, value = "获取服务信息")
     public String getProperty(@RequestParam("key") String key) {
         return env.getProperty(key);
     }
 
-    @PostMapping("/system_app/setInstanceUp")
-    @ApiOperation(response = String.class, value = "设置服务上线")
-    public void setInstanceUp() {
-        infoManager.setInstanceStatus(InstanceInfo.InstanceStatus.UP);
+    @PostMapping("/actuator/set_instance_status/{status}")
+    @ApiOperation(response = String.class, value = "设置服务状态")
+    public void setInstanceStatus(@PathVariable("status") String status) {
+        if("up".equals(status)) {
+            infoManager.setInstanceStatus(InstanceInfo.InstanceStatus.UP);
+        }
+        if("down".equals(status)) {
+            infoManager.setInstanceStatus(InstanceInfo.InstanceStatus.DOWN);
+        }
     }
 
-    @PostMapping("/system_app/setInstanceDown")
-    @ApiOperation(response = String.class, value = "设置服务下线")
-    public void setInstanceDown() {
-        infoManager.setInstanceStatus(InstanceInfo.InstanceStatus.DOWN);
-    }
 }
