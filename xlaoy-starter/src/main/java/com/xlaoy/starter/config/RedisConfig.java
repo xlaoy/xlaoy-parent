@@ -17,26 +17,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisConfig {
 
-    //@Autowired
-    //private ReactiveRedisConnectionFactory reactiveRedisConnectionFactory;
-
-    /*@Bean
-    public ReactiveRedisTemplate reactiveRedisTemplate() {
-
-        RedisSerializer stringSerializer = new StringRedisSerializer();
-        GenericJackson2JsonRedisSerializer jsonRedisSerializer = new GenericJackson2JsonRedisSerializer(JSONUtil.getObjectMapper());
-
-        RedisSerializationContext serializationContext = RedisSerializationContext
-                .newSerializationContext()
-                .key(stringSerializer)
-                .value(jsonRedisSerializer)
-                .hashKey(stringSerializer)
-                .hashValue(jsonRedisSerializer)
-                .build();
-        ReactiveRedisTemplate reactiveRedisTemplate = new ReactiveRedisTemplate(reactiveRedisConnectionFactory, serializationContext);
-        return reactiveRedisTemplate;
-    }*/
-
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
 
