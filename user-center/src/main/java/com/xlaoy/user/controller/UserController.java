@@ -22,10 +22,10 @@ public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("${xlaoy.user}")
+    /*@Value("${xlaoy.user:}")
     private String name;
-    @Value("${gitrepodatabasedbpwd}")
-    private String gitrepodatabasedbpwd;
+    @Value("${gitrepodatabasedbpwd:}")
+    private String gitrepodatabasedbpwd;*/
 
     @Autowired
     private ITradeSao tradeSao;
@@ -39,15 +39,14 @@ public class UserController {
     public String test01(@RequestParam("heheda") String heheda) {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
         userService.test01();
-        return name;
+        return "";
     }
 
     @GetMapping(value = "/user/test02")
     @ApiOperation(response = String.class, value = "获取名称")
     public String test02() {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
-        tradeSao.test01();
-        return "qqq";
+        return tradeSao.test01();
     }
 
     @GetMapping(value = "/user/test03")
@@ -61,7 +60,7 @@ public class UserController {
     @ApiOperation(response = String.class, value = "获取名称")
     public String test04() {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
-        return gitrepodatabasedbpwd;
+        return "";
     }
 
     @PostMapping(value = "/user/register")

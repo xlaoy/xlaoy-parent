@@ -21,7 +21,7 @@ public class UserOtherController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("${gitrepodatabasedbpwd}")
+    @Value("${gitrepodatabasedbpwd:}")
     private String gitrepodatabasedbpwd;
 
     @GetMapping(value = "/user_other/test01")

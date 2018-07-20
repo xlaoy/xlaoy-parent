@@ -20,7 +20,7 @@ public class SetupConfig implements Runnable {
 
     @Override
     public void run() {
-        infoManager.setInstanceStatus(InstanceInfo.InstanceStatus.DOWN);
-        logger.info("应用状态设置为DOWN");
+        //infoManager.setInstanceStatus(InstanceInfo.InstanceStatus.DOWN);
+        //logger.info("应用状态设置为DOWN");
     }
 }

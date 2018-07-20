@@ -33,8 +33,9 @@ public class TradeController implements ITradeController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
-        throw new BizException("1001", "卧槽。。。");
+        //throw new BizException("1001", "卧槽。。。");
         //return name;
+        return "TradeController>test01";
     }
 
 

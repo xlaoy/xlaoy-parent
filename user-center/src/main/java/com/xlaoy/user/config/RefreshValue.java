@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RefreshValue {
 
-    @Value("${gitreponame}")
+    @Value("${gitreponame:}")
     private String gitreponame;
 
 }
