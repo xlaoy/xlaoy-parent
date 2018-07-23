@@ -73,9 +73,9 @@ ribbon:
   #MaxAutoRetriesNextServer: 1 #对下个实例的重试次数
 
 # 开启服务降级
-feign:
-  hystrix:
-    enabled: true
+#feign:
+#  hystrix:
+#    enabled: true
 #  compression:
 #    request:
 #      enabled: true
