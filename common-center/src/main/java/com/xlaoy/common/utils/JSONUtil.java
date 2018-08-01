@@ -50,6 +50,9 @@ public final class JSONUtil {
     }
 
     public static String toJsonString(Object object) {
+        if(object == null) {
+            return "{}";
+        }
         try {
             return mapper.writeValueAsString(object);
         } catch (IOException e) {

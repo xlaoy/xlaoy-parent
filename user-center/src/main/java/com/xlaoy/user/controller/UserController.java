@@ -60,7 +60,7 @@ public class UserController {
     @ApiOperation(response = String.class, value = "获取名称")
     public String test04() {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
-        return "";
+        return "长哈哈";
     }
 
     @PostMapping(value = "/user/register")
