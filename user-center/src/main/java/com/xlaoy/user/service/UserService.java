@@ -37,6 +37,11 @@ public class UserService {
         redisTemplate.opsForHash().put(RedisHashName.USER, guid, userDTO);
     }
 
+    public void setUserAndUrl() {
+        redisTemplate.opsForHash().put(RedisHashName.USER_PERMISSION, "asdasdfasfaq243fsdf43qwef", "ROLE_ORDINARY_USER,ROLE_TRADE_USER");
+        redisTemplate.opsForHash().put(RedisHashName.URL_PERMISSION, "/api-user/user/test04", "ROLE_ORDINARY_USER,ROLE_DD");
+    }
+
     public void rabbit() {
         UserDTO dto = new UserDTO();
         dto.setUserName("haha");

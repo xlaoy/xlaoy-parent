@@ -75,4 +75,10 @@ public class UserController {
         userService.rabbit();
     }
 
+    @PostMapping(value = "/user/setUserAndUrl")
+    @ApiOperation(response = void.class, value = "setUserAndUrl")
+    public void setUserAndUrl() {
+        userService.setUserAndUrl();
+    }
+
 }

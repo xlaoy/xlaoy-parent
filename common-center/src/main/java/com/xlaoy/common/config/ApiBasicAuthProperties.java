@@ -32,14 +32,14 @@ public class ApiBasicAuthProperties {
 
         private String password;
 
-        private String prefixMatch;
+        private String prefix;
 
-        public String getPrefixMatch() {
-            return prefixMatch;
+        public String getPrefix() {
+            return prefix;
         }
 
-        public void setPrefixMatch(String prefixMatch) {
-            this.prefixMatch = prefixMatch;
+        public void setPrefix(String prefix) {
+            this.prefix = prefix;
         }
 
         public String getUsername() {
