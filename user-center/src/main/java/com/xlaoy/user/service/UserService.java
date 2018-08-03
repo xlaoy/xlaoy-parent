@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 /**
  * Created by Administrator on 2018/7/3 0003.
  */
@@ -38,8 +40,8 @@ public class UserService {
     }
 
     public void setUserAndUrl() {
-        redisTemplate.opsForHash().put(RedisHashName.USER_PERMISSION, "asdasdfasfaq243fsdf43qwef", "ROLE_ORDINARY_USER,ROLE_TRADE_USER");
-        redisTemplate.opsForHash().put(RedisHashName.URL_PERMISSION, "/api-user/user/test04", "ROLE_ORDINARY_USER,ROLE_DD");
+        redisTemplate.opsForHash().put(RedisHashName.USER_PERMISSION, "asdasdfasfaq243fsdf43qwef", Arrays.asList("ROLE_ORDINARY_USER", "ROLE_TRADE_USER"));
+        redisTemplate.opsForHash().put(RedisHashName.URL_PERMISSION, "/api-user/user/test04", Arrays.asList("ROLE_ORDINARY_USER","ROLE_DD"));
     }
 
     public void rabbit() {
