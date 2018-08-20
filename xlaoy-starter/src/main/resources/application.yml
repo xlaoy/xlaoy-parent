@@ -11,23 +11,23 @@ spring:
     encoding:
       charset: UTF-8
       force: true
-  datasource:
-    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
-    username: root
-    password: 123456
-    driver-class-name: net.sf.log4jdbc.DriverSpy
-    tomcat:
-      max-active: 20
-      initial-size: 5
-      max-wait: 10000
-      max-idle: 10
-      min-idle: 5
-      time-between-eviction-runs-millis: 18800
-      min-evictable-idle-time-millis: 300000
-      validation-query: SELECT 1
-      test-on-borrow: false
-      test-while-idle: true
-      test-on-return: false
+#  datasource:
+#    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+#    username: root
+#    password: 123456
+#    driver-class-name: net.sf.log4jdbc.DriverSpy
+#    tomcat:
+#      max-active: 20
+#      initial-size: 5
+#      max-wait: 10000
+#      max-idle: 10
+#      min-idle: 5
+#      time-between-eviction-runs-millis: 18800
+#      min-evictable-idle-time-millis: 300000
+#      validation-query: SELECT 1
+#      test-on-borrow: false
+#      test-while-idle: true
+#      test-on-return: false
   jpa:
     database: mysql
     hibernate:
@@ -43,12 +43,12 @@ spring:
         min-idle: 0
         max-active: 8
         max-wait: 1
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: xlaoy
-    password: 123456
-    virtual-host: /xlaoy
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: xlaoy
+#    password: 123456
+#    virtual-host: /xlaoy
 
 # 熔断 HystrixCommandProperties  配置类 监控 http://m.blog.csdn.net/u012702547/article/details/78224483
 hystrix:
@@ -97,6 +97,12 @@ management:
       exposure:
         include: "*"
 
+task:
+  client:
+    task-server-name: cluster-task-server
+    username: task
+    password: 123456
+
 swagger:
   docket:
     actuate:
@@ -105,3 +111,6 @@ swagger:
     app:
       title: 系统应用模块
       base-package: com.xlaoy.starter
+    taskclient:
+      title: 定时任务客户端
+      base-package: com.task.client

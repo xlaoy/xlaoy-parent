@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(
+            "/task_client/execute_secheduled_task",
             "/actuator/**",
             "/error",
             "/favicon.ico"
