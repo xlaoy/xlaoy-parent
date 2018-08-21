@@ -81,4 +81,16 @@ public class UserController {
         userService.setUserAndUrl();
     }
 
+    @PostMapping(value = "/user/registerDelayTask")
+    @ApiOperation(response = void.class, value = "registerDelayTask")
+    public void registerDelayTask() {
+        userService.registerDelayTask();
+    }
+
+    @PostMapping(value = "/user/DelayTaskcancel/{taskId}")
+    @ApiOperation(response = void.class, value = "DelayTaskcancel")
+    public void cancel(@PathVariable("taskId")String taskId) {
+        userService.cancel(taskId);
+    }
+
 }

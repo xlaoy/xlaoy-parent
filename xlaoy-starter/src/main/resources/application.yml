@@ -97,12 +97,6 @@ management:
       exposure:
         include: "*"
 
-task:
-  client:
-    task-server-name: cluster-task-server
-    username: task
-    password: 123456
-
 swagger:
   docket:
     actuate:

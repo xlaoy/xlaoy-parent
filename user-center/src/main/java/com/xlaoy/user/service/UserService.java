@@ -1,5 +1,7 @@
 package com.xlaoy.user.service;
 
+import com.task.client.register.DelayTaskData;
+import com.task.client.register.DelayTaskRegister;
 import com.xlaoy.common.constants.RedisHashName;
 import com.xlaoy.common.exception.BizException;
 import com.xlaoy.common.utils.IDWorkUtil;
@@ -8,9 +10,11 @@ import com.xlaoy.user.config.RabbitConfig;
 import com.xlaoy.user.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2018/7/3 0003.
@@ -24,6 +28,9 @@ public class UserService {
     private RedisTemplate redisTemplate;
     @Autowired
     private RabbitTemplate rabbitTemplate*/;
+
+    @Autowired
+    private DelayTaskRegister delayTaskRegister;
 
     public void test01() {
         throw new BizException("你牛逼");
@@ -51,6 +58,15 @@ public class UserService {
     //@RabbitHandler
     public void rabbitProcess(UserDTO dto) {
         logger.info("收到消息：" + JSONUtil.toJsonString(dto));
+    }
+
+    public void registerDelayTask() {
+        String taskId = delayTaskRegister.register(DelayTaskData.bizName("usernotify").bizParameters("12341234").executeTime(new Date()));
+        logger.info("taskId:" + taskId);
+    }
+
+    public void cancel(String taskId) {
+        delayTaskRegister.cancel(taskId);
     }
 
 }
