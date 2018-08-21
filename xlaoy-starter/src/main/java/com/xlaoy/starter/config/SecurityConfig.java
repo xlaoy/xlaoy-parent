@@ -1,5 +1,6 @@
 package com.xlaoy.starter.config;
 
+import com.task.client.config.ServerURL;
 import com.xlaoy.starter.filter.UserGuidFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -59,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(
-            "/task_client/execute_secheduled_task",
+            ServerURL.TASK_PERMITALL_URL,
             "/actuator/**",
             "/error",
             "/favicon.ico"
