@@ -22,6 +22,6 @@ public class TradeTask implements SecheduledTask {
 
     @Override
     public void execute(String parameters) {
-        logger.info(">>>TradeTask");
+        logger.info(">>>TradeTask:" + parameters);
     }
 }
