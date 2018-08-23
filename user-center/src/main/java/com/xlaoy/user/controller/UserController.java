@@ -83,7 +83,7 @@ public class UserController {
 
     @PostMapping(value = "/user/registerDelayTask")
     @ApiOperation(response = void.class, value = "registerDelayTask")
-    public void registerDelayTask() {
+    public void registerDelayTask() throws Exception {
         userService.registerDelayTask();
     }
 

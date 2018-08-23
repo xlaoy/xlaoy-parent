@@ -6,6 +6,7 @@ import com.xlaoy.common.constants.RedisHashName;
 import com.xlaoy.common.exception.BizException;
 import com.xlaoy.common.utils.IDWorkUtil;
 import com.xlaoy.common.utils.JSONUtil;
+import com.xlaoy.common.utils.Java8TimeUtil;
 import com.xlaoy.user.config.RabbitConfig;
 import com.xlaoy.user.dto.UserDTO;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -60,8 +62,10 @@ public class UserService {
         logger.info("收到消息：" + JSONUtil.toJsonString(dto));
     }
 
-    public void registerDelayTask() {
-        String taskId = delayTaskRegister.register(DelayTaskData.bizName("usernotify").bizParameters("12341234").executeTime(new Date()));
+    public void registerDelayTask() throws Exception {
+        String taskId = delayTaskRegister.register(DelayTaskData.bizName("usernotify")
+                .bizParameters("12341234")
+                .executeTime(new SimpleDateFormat(Java8TimeUtil.YYYY_MM_DD_HH_MM_SS).parse("2018-08-23 20:00:00")));
         logger.info("taskId:" + taskId);
     }
 
