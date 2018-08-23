@@ -22,6 +22,6 @@ public class UserTask implements SecheduledTask {
 
     @Override
     public void execute(String parameters) {
-        logger.info("/////UserTask");
+        logger.info("/////UserTask:  " + parameters);
     }
 }
