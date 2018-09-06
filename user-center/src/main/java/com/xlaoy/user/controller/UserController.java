@@ -42,11 +42,11 @@ public class UserController {
         return "";
     }
 
-    @GetMapping(value = "/user/test02")
+    @GetMapping(value = "/user/test02/{userId}/{uid}")
     @ApiOperation(response = String.class, value = "获取名称")
-    public String test02() {
+    public String test02(@PathVariable("userId")String userId, @PathVariable("uid")String uid) {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
-        return tradeSao.test01();
+        return tradeSao.test01(userId, uid);
     }
 
     @GetMapping(value = "/user/test03")

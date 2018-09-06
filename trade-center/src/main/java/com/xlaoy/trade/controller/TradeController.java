@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,8 +27,8 @@ public class TradeController implements ITradeController {
 
     @Override
     @ApiOperation(response = String.class, value = "获取名称")
-    public String test01() {
-        logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
+    public String test01(@PathVariable("userId")String userId, @PathVariable("uid")String uid) {
+        logger.info("TradeController>test01>" + userId + ",uid=" + uid);
         /*try {
             Thread.sleep(6500);
         } catch (InterruptedException e) {
@@ -35,7 +36,7 @@ public class TradeController implements ITradeController {
         }*/
         //throw new BizException("1001", "卧槽。。。");
         //return name;
-        return "TradeController>test01";
+        return userId;
     }
 
 
