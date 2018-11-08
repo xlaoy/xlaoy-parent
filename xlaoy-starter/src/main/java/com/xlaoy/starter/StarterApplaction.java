@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * Created by Administrator on 2018/2/1 0001.
  */
-@EnableTaskClient
+//@EnableTaskClient
 @EnableSwagger2Doc
 @EnableEurekaClient
 @EnableCircuitBreaker

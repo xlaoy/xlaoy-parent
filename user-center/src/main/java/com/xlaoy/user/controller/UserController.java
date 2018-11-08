@@ -81,7 +81,7 @@ public class UserController {
         userService.setUserAndUrl();
     }
 
-    @PostMapping(value = "/user/registerDelayTask")
+    /*@PostMapping(value = "/user/registerDelayTask")
     @ApiOperation(response = void.class, value = "registerDelayTask")
     public void registerDelayTask() throws Exception {
         userService.registerDelayTask();
@@ -91,6 +91,6 @@ public class UserController {
     @ApiOperation(response = void.class, value = "DelayTaskcancel")
     public void cancel(@PathVariable("taskId")String taskId) {
         userService.cancel(taskId);
-    }
+    }*/
 
 }

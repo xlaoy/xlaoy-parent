@@ -28,21 +28,21 @@ spring:
 #      test-on-borrow: false
 #      test-while-idle: true
 #      test-on-return: false
-  jpa:
-    database: mysql
-    hibernate:
-      ddl-auto: none
-  redis:
-    database: 15
-    host: 10.200.157.139
-    port: 6379
-    password: Zchzredis2017
-    jedis:
-      pool:
-        max-idle: 8
-        min-idle: 0
-        max-active: 8
-        max-wait: 1
+#  jpa:
+#    database: mysql
+#    hibernate:
+#      ddl-auto: none
+#  redis:
+#    database: 15
+#    host: 10.200.157.139
+#    port: 6379
+#    password: Zchzredis2017
+#    jedis:
+#      pool:
+#        max-idle: 8
+#        min-idle: 0
+#        max-active: 8
+#        max-wait: 1
 #  rabbitmq:
 #    host: 127.0.0.1
 #    port: 5672

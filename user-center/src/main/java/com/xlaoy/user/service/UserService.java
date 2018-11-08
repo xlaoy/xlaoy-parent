@@ -31,8 +31,8 @@ public class UserService {
     @Autowired
     private RabbitTemplate rabbitTemplate*/;
 
-    @Autowired
-    private DelayTaskRegister delayTaskRegister;
+    //@Autowired
+    //private DelayTaskRegister delayTaskRegister;
 
     public void test01() {
         throw new BizException("你牛逼");
@@ -62,7 +62,7 @@ public class UserService {
         logger.info("收到消息：" + JSONUtil.toJsonString(dto));
     }
 
-    public void registerDelayTask() throws Exception {
+    /*public void registerDelayTask() throws Exception {
         String taskId = delayTaskRegister.register(DelayTaskData.bizName("usernotify")
                 .bizParameters("12341234")
                 .executeTime(new SimpleDateFormat(Java8TimeUtil.YYYY_MM_DD_HH_MM_SS).parse("2018-08-23 20:00:00")));
@@ -71,6 +71,6 @@ public class UserService {
 
     public void cancel(String taskId) {
         delayTaskRegister.cancel(taskId);
-    }
+    }*/
 
 }
