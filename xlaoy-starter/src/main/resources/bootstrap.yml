@@ -13,7 +13,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://discovery:123456@127.0.0.1:5200/eureka/
+      defaultZone: http://discovery:123456@127.0.0.1:5010/eureka/
   instance:
     prefer-ip-address: true
     metadata-map:

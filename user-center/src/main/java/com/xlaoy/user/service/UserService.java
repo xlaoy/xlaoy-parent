@@ -1,7 +1,5 @@
 package com.xlaoy.user.service;
 
-import com.task.client.register.DelayTaskData;
-import com.task.client.register.DelayTaskRegister;
 import com.xlaoy.common.constants.RedisHashName;
 import com.xlaoy.common.exception.BizException;
 import com.xlaoy.common.utils.IDWorkUtil;
@@ -9,9 +7,11 @@ import com.xlaoy.common.utils.JSONUtil;
 import com.xlaoy.common.utils.Java8TimeUtil;
 import com.xlaoy.user.config.RabbitConfig;
 import com.xlaoy.user.dto.UserDTO;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -72,5 +72,10 @@ public class UserService {
     public void cancel(String taskId) {
         delayTaskRegister.cancel(taskId);
     }*/
+
+    @KafkaListener(topics = "request_url", groupId = "xlaoy-user")
+    public void reciveUrlLog(ConsumerRecord<String, String> record) {
+        logger.info("收到kafka消息，record=" + record);
+    }
 
 }

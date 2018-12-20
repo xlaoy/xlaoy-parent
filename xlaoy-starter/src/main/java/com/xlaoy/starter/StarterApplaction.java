@@ -1,7 +1,6 @@
 package com.xlaoy.starter;
 
 import com.spring4all.swagger.EnableSwagger2Doc;
-import com.task.client.config.EnableTaskClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;

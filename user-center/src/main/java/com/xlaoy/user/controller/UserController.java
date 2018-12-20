@@ -38,7 +38,7 @@ public class UserController {
     @ApiOperation(response = String.class, value = "获取名称")
     public String test01(@RequestParam("heheda") String heheda) {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
-        userService.test01();
+        //userService.test01();
         return "";
     }
 

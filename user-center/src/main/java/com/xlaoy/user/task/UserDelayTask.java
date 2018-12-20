@@ -1,3 +1,4 @@
+/*
 package com.xlaoy.user.task;
 
 import com.task.client.DelayTask;
@@ -5,9 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+*/
 /**
  * Created by Administrator on 2018/8/21 0021.
- */
+ *//*
+
 @Component
 public class UserDelayTask implements DelayTask {
 
@@ -23,3 +26,4 @@ public class UserDelayTask implements DelayTask {
         logger.info("DelayTask>>>" + bizParameters);
     }
 }
+*/

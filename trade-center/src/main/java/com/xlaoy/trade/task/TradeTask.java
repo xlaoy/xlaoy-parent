@@ -1,3 +1,4 @@
+/*
 package com.xlaoy.trade.task;
 
 import com.task.client.SecheduledTask;
@@ -7,9 +8,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+*/
 /**
  * Created by Administrator on 2018/8/19 0019.
- */
+ *//*
+
 @Component
 public class TradeTask implements SecheduledTask {
 
@@ -25,3 +28,4 @@ public class TradeTask implements SecheduledTask {
         logger.info(">>>TradeTask:" + parameters);
     }
 }
+*/
