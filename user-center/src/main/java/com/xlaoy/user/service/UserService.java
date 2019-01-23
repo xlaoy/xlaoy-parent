@@ -7,6 +7,8 @@ import com.xlaoy.common.utils.JSONUtil;
 import com.xlaoy.common.utils.Java8TimeUtil;
 import com.xlaoy.user.config.RabbitConfig;
 import com.xlaoy.user.dto.UserDTO;
+import com.xlaoy.user.entity.KafkaOffSetEntity;
+import com.xlaoy.user.repository.IKafkaOffSetRepository;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,9 +75,21 @@ public class UserService {
         delayTaskRegister.cancel(taskId);
     }*/
 
-    @KafkaListener(topics = "request_url", groupId = "xlaoy-user")
+
+    @Autowired
+    private IKafkaOffSetRepository kafkaOffSetRepository;
+
+    @KafkaListener(topics = "request_url", groupId = "xlaoy-1")
     public void reciveUrlLog(ConsumerRecord<String, String> record) {
         logger.info("收到kafka消息，record=" + record);
+        KafkaOffSetEntity offSetEntity =  kafkaOffSetRepository.findByTopicAndGroupId("request_url", "xlaoy-1");
+        if(offSetEntity == null) {
+            offSetEntity = new KafkaOffSetEntity();
+        }
+        offSetEntity.setTopic("request_url");
+        offSetEntity.setGroupId("xlaoy-1");
+        offSetEntity.setOffset(record.offset());
+        kafkaOffSetRepository.save(offSetEntity);
     }
 
 }

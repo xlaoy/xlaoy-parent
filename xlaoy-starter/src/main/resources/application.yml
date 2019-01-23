@@ -49,6 +49,13 @@ spring:
 #    username: xlaoy
 #    password: 123456
 #    virtual-host: /xlaoy
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: xlaoy
+      username: xlaoy
+      password: ["1","2","3","4","5","6"]
 
 # 熔断 HystrixCommandProperties  配置类 监控 http://m.blog.csdn.net/u012702547/article/details/78224483
 hystrix:

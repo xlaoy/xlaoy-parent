@@ -36,7 +36,7 @@ public class UserController {
 
     @GetMapping(value = "/user/test01")
     @ApiOperation(response = String.class, value = "获取名称")
-    public String test01(@RequestParam("heheda") String heheda) {
+    public String test01() {
         logger.info("UserGuidHolder.getGuid=" + UserGuidHolder.getGuid());
         //userService.test01();
         return "";
