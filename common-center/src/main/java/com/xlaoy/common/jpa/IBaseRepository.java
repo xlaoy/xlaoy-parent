@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * Created by xlaoy on 2017/12/25 0025.
  */
-@NoRepositoryBean
-public interface IBaseRepository<Entity> extends JpaRepository<Entity, Integer>, JpaSpecificationExecutor<Entity> {
+//@NoRepositoryBean
+public interface IBaseRepository<Entity> /*extends JpaRepository<Entity, Integer>, JpaSpecificationExecutor<Entity>*/ {
 
     /**
      * 根据id查询数据

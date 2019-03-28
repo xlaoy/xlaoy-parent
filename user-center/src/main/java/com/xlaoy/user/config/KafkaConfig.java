@@ -1,6 +1,6 @@
 package com.xlaoy.user.config;
 
-import com.xlaoy.user.service.RequestUrlMessageListener;
+/*import com.xlaoy.user.service.RequestUrlMessageListener;
 import com.xlaoy.user.service.SaveOffsetsOnRebalance;
 import com.xlaoy.user.service.TestMessageListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +11,22 @@ import org.springframework.kafka.listener.AbstractMessageListenerContainer;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.listener.KafkaMessageListenerContainer;
 import org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter;
-import org.springframework.kafka.listener.config.ContainerProperties;
+import org.springframework.kafka.listener.config.ContainerProperties;*/
 
 /**
  * Created by Administrator on 2018/12/21 0021.
  */
-@Configuration
+//@Configuration
 public class KafkaConfig {
 
-    @Autowired
+    /*@Autowired
     private ConsumerFactory consumerFactory;
     @Autowired
     private SaveOffsetsOnRebalance saveOffsetsOnRebalance;
     @Autowired
-    private RequestUrlMessageListener requestUrlMessageListener;
+    private RequestUrlMessageListener requestUrlMessageListener;*/
 
-    @Bean
+    /*@Bean
     public KafkaMessageListenerContainer requestUrlMessageListenerContainer() {
         ContainerProperties containerProperties = new ContainerProperties("request_url");
         containerProperties.setGroupId("xlaoy-1");
@@ -36,7 +36,7 @@ public class KafkaConfig {
         //containerProperties.setSyncCommits(false);
         KafkaMessageListenerContainer requestUrlMessageListenerContainer = new KafkaMessageListenerContainer(consumerFactory, containerProperties);
         return requestUrlMessageListenerContainer;
-    }
+    }*/
 
     /*@Bean
     public KafkaMessageListenerContainer testMessageListenerContainer() {

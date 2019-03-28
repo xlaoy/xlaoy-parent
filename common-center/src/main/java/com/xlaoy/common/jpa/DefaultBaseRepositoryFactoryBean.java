@@ -1,6 +1,6 @@
 package com.xlaoy.common.jpa;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+/*import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
@@ -41,4 +41,4 @@ public class DefaultBaseRepositoryFactoryBean<Repository extends JpaRepository<E
 
 	}
 	
-}
+}*/

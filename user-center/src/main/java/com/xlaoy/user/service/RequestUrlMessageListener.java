@@ -1,4 +1,5 @@
 package com.xlaoy.user.service;
+/*
 
 import com.xlaoy.common.exception.BizException;
 import kafka.coordinator.group.BaseKey;
@@ -15,9 +16,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
 
+*/
 /**
  * Created by Administrator on 2018/12/24 0024.
- */
+ *//*
+
 @Slf4j
 @Component
 public class RequestUrlMessageListener implements AcknowledgingMessageListener<byte[], byte[]> {
@@ -53,3 +56,4 @@ public class RequestUrlMessageListener implements AcknowledgingMessageListener<b
 
 
 }
+*/

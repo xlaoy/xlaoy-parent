@@ -1,24 +1,16 @@
 package com.xlaoy.user.service;
 
-import com.xlaoy.common.constants.RedisHashName;
 import com.xlaoy.common.exception.BizException;
-import com.xlaoy.common.utils.IDWorkUtil;
 import com.xlaoy.common.utils.JSONUtil;
-import com.xlaoy.common.utils.Java8TimeUtil;
-import com.xlaoy.user.config.RabbitConfig;
+import com.xlaoy.user.dao.CustomerDao;
 import com.xlaoy.user.dto.UserDTO;
-import com.xlaoy.user.entity.KafkaOffSetEntity;
-import com.xlaoy.user.repository.IKafkaOffSetRepository;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
+import com.xlaoy.user.mapper.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by Administrator on 2018/7/3 0003.
@@ -76,13 +68,13 @@ public class UserService {
     }*/
 
 
-    @Autowired
-    private IKafkaOffSetRepository kafkaOffSetRepository;
+    //@Autowired
+    //private IKafkaOffSetRepository kafkaOffSetRepository;
 
-    @KafkaListener(topics = "request_url", groupId = "xlaoy-1")
+    /*@KafkaListener(topics = "request_url_log", groupId = "tongji")
     public void reciveUrlLog(ConsumerRecord<String, String> record) {
         logger.info("收到kafka消息，record=" + record);
-        KafkaOffSetEntity offSetEntity =  kafkaOffSetRepository.findByTopicAndGroupId("request_url", "xlaoy-1");
+        KafkaOffSetEntity offSetEntity =  kafkaOffSetRepository.findByTopicAndGroupId("request_url_log", "tongji");
         if(offSetEntity == null) {
             offSetEntity = new KafkaOffSetEntity();
         }
@@ -90,6 +82,21 @@ public class UserService {
         offSetEntity.setGroupId("xlaoy-1");
         offSetEntity.setOffset(record.offset());
         kafkaOffSetRepository.save(offSetEntity);
+    }*/
+
+
+    @Autowired
+    private CustomerDao customerDao;
+
+    public Integer findByName() {
+        return customerDao.findByName("haha").getAge();
+    }
+
+    public void save() {
+        Customer customer = new Customer();
+        customer.setName("nimahai" + new Random().nextInt(100));
+        customer.setAge(12);
+        customerDao.insert(customer);
     }
 
 }

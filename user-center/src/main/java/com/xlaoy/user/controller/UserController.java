@@ -93,4 +93,17 @@ public class UserController {
         userService.cancel(taskId);
     }*/
 
+
+    @GetMapping(value = "/user/customer_age")
+    @ApiOperation(response = String.class, value = "获取名称")
+    public Integer customer() {
+        return userService.findByName();
+    }
+
+    @GetMapping(value = "/user/customer_save")
+    @ApiOperation(response = String.class, value = "获取名称")
+    public void save() {
+        userService.save();
+    }
+
 }

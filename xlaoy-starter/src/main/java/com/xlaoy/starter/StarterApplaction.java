@@ -12,8 +12,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 //@EnableTaskClient
 @EnableSwagger2Doc
-@EnableEurekaClient
-@EnableCircuitBreaker
+//@EnableEurekaClient
+//@EnableCircuitBreaker
 @EnableFeignClients(basePackages = "com.xlaoy.innerapi")
 @SpringBootApplication(scanBasePackages = {"com.xlaoy"})
 public class StarterApplaction {

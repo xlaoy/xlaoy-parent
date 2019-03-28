@@ -11,23 +11,24 @@ spring:
     encoding:
       charset: UTF-8
       force: true
-#  datasource:
-#    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
-#    username: root
-#    password: 123456
-#    driver-class-name: net.sf.log4jdbc.DriverSpy
-#    tomcat:
-#      max-active: 20
-#      initial-size: 5
-#      max-wait: 10000
-#      max-idle: 10
-#      min-idle: 5
-#      time-between-eviction-runs-millis: 18800
-#      min-evictable-idle-time-millis: 300000
-#      validation-query: SELECT 1
-#      test-on-borrow: false
-#      test-while-idle: true
-#      test-on-return: false
+  datasource:
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?serverTimezone=UTC&useSSL=true&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    driver-class-name: net.sf.log4jdbc.DriverSpy #com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    tomcat:
+      max-active: 20
+      initial-size: 5
+      max-wait: 10000
+      max-idle: 10
+      min-idle: 5
+      time-between-eviction-runs-millis: 18800
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1
+      test-on-borrow: false
+      test-while-idle: true
+      test-on-return: false
 #  jpa:
 #    database: mysql
 #    hibernate:
@@ -56,6 +57,13 @@ spring:
       database: xlaoy
       username: xlaoy
       password: ["1","2","3","4","5","6"]
+
+
+#org.mybatis.spring.boot.autoconfigure.MybatisProperties
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true #启驼峰命名转换
+  #mapperLocations: classpath*:com/xlaoy/**/mapper/*.xml
 
 # 熔断 HystrixCommandProperties  配置类 监控 http://m.blog.csdn.net/u012702547/article/details/78224483
 hystrix:
