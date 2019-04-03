@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(ZookeeperProperties.class)
 public class CuratorConfig {
 
-   /* @Autowired
+    @Autowired
     private ZookeeperProperties properties;
 
     @Bean
@@ -26,6 +26,6 @@ public class CuratorConfig {
         CuratorFramework curator = CuratorFrameworkFactory.newClient(properties.getHosts(), retryPolicy);
         curator.start();
         return curator;
-    }*/
+    }
 
 }

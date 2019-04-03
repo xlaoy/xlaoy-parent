@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Random;
 
@@ -88,15 +89,24 @@ public class UserService {
     @Autowired
     private CustomerDao customerDao;
 
+
     public Integer findByName() {
-        return customerDao.findByName("haha").getAge();
+        return hahaha();
     }
 
-    public void save() {
+    @Transactional
+    public Integer save() {
+        Integer a = customerDao.findByName("haha").getAge();
         Customer customer = new Customer();
         customer.setName("nimahai" + new Random().nextInt(100));
         customer.setAge(12);
         customerDao.insert(customer);
+        return a;
+    }
+
+    @Transactional
+    public Integer hahaha() {
+        return customerDao.findByName("haha").getAge();
     }
 
 }

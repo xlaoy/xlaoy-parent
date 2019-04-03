@@ -1,5 +1,4 @@
 package com.xlaoy.user.service;
-/*
 
 import com.xlaoy.user.repository.IKafkaOffSetRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -15,10 +14,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-*/
-/**
- * Created by Administrator on 2018/12/21 0021.
- *//*
 
 @Slf4j
 @Component
@@ -37,14 +32,10 @@ public class SaveOffsetsOnRebalance implements ConsumerAwareRebalanceListener {
 
     }
 
-    */
-/**
+    /**
      * 分区分配完成后
      * 重新设置offset
-     * @param consumer
-     * @param partitions
-     *//*
-
+     */
     @Override
     public void onPartitionsAssigned(Consumer<?, ?> consumer, Collection<TopicPartition> partitions) {
         for(TopicPartition partition : partitions) {
@@ -54,4 +45,3 @@ public class SaveOffsetsOnRebalance implements ConsumerAwareRebalanceListener {
         }
     }
 }
-*/

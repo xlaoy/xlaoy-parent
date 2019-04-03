@@ -12,23 +12,26 @@ spring:
       charset: UTF-8
       force: true
   datasource:
-    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?serverTimezone=UTC&useSSL=true&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-    username: root
-    password: 123456
-    driver-class-name: net.sf.log4jdbc.DriverSpy #com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
-    tomcat:
-      max-active: 20
-      initial-size: 5
-      max-wait: 10000
-      max-idle: 10
-      min-idle: 5
-      time-between-eviction-runs-millis: 18800
-      min-evictable-idle-time-millis: 300000
-      validation-query: SELECT 1
-      test-on-borrow: false
-      test-while-idle: true
-      test-on-return: false
+    dbmaster:
+      jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?serverTimezone=UTC&useSSL=false&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: 123456
+      driver-class-name: net.sf.log4jdbc.DriverSpy #com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      maxPoolSize: 20
+    dbslave:
+      jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3307/xlaoy?serverTimezone=UTC&useSSL=false&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: 123456
+      driver-class-name: net.sf.log4jdbc.DriverSpy #com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      maxPoolSize: 20
+  sharding-jdbc:
+    master-slave-rule:
+      name: dataSource
+      masterDataSourceName: dbmaster
+      slaveDataSourceNames: dbslave
+      loadBalanceAlgorithmType: ROUND_ROBIN # 配置从库选择策略，提供轮询与随机，这里选择用轮询
 #  jpa:
 #    database: mysql
 #    hibernate:
@@ -58,6 +61,10 @@ spring:
       username: xlaoy
       password: ["1","2","3","4","5","6"]
 
+sharding:
+  jdbc:
+    datasource:
+      names: db_master,db_slave
 
 #org.mybatis.spring.boot.autoconfigure.MybatisProperties
 mybatis:

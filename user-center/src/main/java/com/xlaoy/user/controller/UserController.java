@@ -102,8 +102,8 @@ public class UserController {
 
     @GetMapping(value = "/user/customer_save")
     @ApiOperation(response = String.class, value = "获取名称")
-    public void save() {
-        userService.save();
+    public Integer save() {
+        return userService.save();
     }
 
 }
