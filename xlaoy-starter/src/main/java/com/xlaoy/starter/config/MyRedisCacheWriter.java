@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package com.xlaoy.starter.config;
 
 import org.springframework.dao.PessimisticLockingFailureException;
@@ -34,6 +35,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+*/
 /**
  * {@link RedisCacheWriter} implementation capable of reading/writing binary data from/to Redis in {@literal standalone}
  * and {@literal cluster} environments. Works upon a given {@link RedisConnectionFactory} to obtain the actual
@@ -49,22 +51,27 @@ import java.util.function.Function;
  * @author Christoph Strobl
  * @author Mark Paluch
  * @since 2.0
- */
+ *//*
+
 public class MyRedisCacheWriter implements RedisCacheWriter {
 
 	private final RedisConnectionFactory connectionFactory;
 	private final RedisSerializer<String> stringSerializer;
 
-	/**
+	*/
+/**
 	 * @param connectionFactory must not be {@literal null}.
-	 */
+	 *//*
+
 	MyRedisCacheWriter(RedisConnectionFactory connectionFactory) {
 		this(connectionFactory, new StringRedisSerializer());
 	}
 
-	/**
+	*/
+/**
 	 * @param connectionFactory must not be {@literal null}.
-	 */
+	 *//*
+
 	MyRedisCacheWriter(RedisConnectionFactory connectionFactory, RedisSerializer<String> stringSerializer) {
 
 		Assert.notNull(connectionFactory, "ConnectionFactory must not be null!");
@@ -74,10 +81,12 @@ public class MyRedisCacheWriter implements RedisCacheWriter {
 		this.stringSerializer = stringSerializer;
 	}
 
-	/*
+	*/
+/*
 	 * (non-Javadoc)
 	 * @see org.springframework.data.redis.cache.RedisCacheWriter#put(java.lang.String, byte[], byte[], java.time.Duration)
-	 */
+	 *//*
+
 	@Override
 	public void put(String name, byte[] key, byte[] value, @Nullable Duration ttl) {
 
@@ -93,10 +102,12 @@ public class MyRedisCacheWriter implements RedisCacheWriter {
 		});
 	}
 
-	/*
+	*/
+/*
 	 * (non-Javadoc)
 	 * @see org.springframework.data.redis.cache.RedisCacheWriter#get(java.lang.String, byte[])
-	 */
+	 *//*
+
 	@Override
 	public byte[] get(String name, byte[] key) {
 
@@ -106,10 +117,12 @@ public class MyRedisCacheWriter implements RedisCacheWriter {
 		return execute(name, connection -> connection.hashCommands().hGet(stringSerializer.serialize(name), key));
 	}
 
-	/*
+	*/
+/*
 	 * (non-Javadoc)
 	 * @see org.springframework.data.redis.cache.RedisCacheWriter#putIfAbsent(java.lang.String, byte[], byte[], java.time.Duration)
-	 */
+	 *//*
+
 	@Override
 	public byte[] putIfAbsent(String name, byte[] key, byte[] value, @Nullable Duration ttl) {
 
@@ -138,10 +151,12 @@ public class MyRedisCacheWriter implements RedisCacheWriter {
 		});
 	}
 
-	/*
+	*/
+/*
 	 * (non-Javadoc)
 	 * @see org.springframework.data.redis.cache.RedisCacheWriter#remove(java.lang.String, byte[])
-	 */
+	 *//*
+
 	@Override
 	public void remove(String name, byte[] key) {
 
@@ -151,10 +166,12 @@ public class MyRedisCacheWriter implements RedisCacheWriter {
 		execute(name, connection -> connection.hashCommands().hDel(stringSerializer.serialize(name), key));
 	}
 
-	/*
+	*/
+/*
 	 * (non-Javadoc)
 	 * @see org.springframework.data.redis.cache.RedisCacheWriter#clean(java.lang.String, byte[])
-	 */
+	 *//*
+
 	@Override
 	public void clean(String name, byte[] pattern) {
 
@@ -189,20 +206,24 @@ public class MyRedisCacheWriter implements RedisCacheWriter {
 		});
 	}
 
-	/**
+	*/
+/**
 	 * Explicitly set a write lock on a cache.
 	 *
 	 * @param name the name of the cache to lock.
-	 */
+	 *//*
+
 	void lock(String name) {
 		execute(name, connection -> doLock(name, connection));
 	}
 
-	/**
+	*/
+/**
 	 * Explicitly remove a write lock from a cache.
 	 *
 	 * @param name the name of the cache to unlock.
-	 */
+	 *//*
+
 	void unlock(String name) {
 		executeLockFree(connection -> doUnlock(name, connection));
 	}
@@ -219,9 +240,11 @@ public class MyRedisCacheWriter implements RedisCacheWriter {
 		return connection.exists(createCacheLockKey(name));
 	}
 
-	/**
+	*/
+/**
 	 * @return {@literal true} if {@link RedisCacheWriter} uses locks.
-	 */
+	 *//*
+
 	private boolean isLockingCacheWriter() {
 		return false;
 	}
@@ -278,3 +301,4 @@ public class MyRedisCacheWriter implements RedisCacheWriter {
 		return (name + "~lock").getBytes(StandardCharsets.UTF_8);
 	}
 }
+*/

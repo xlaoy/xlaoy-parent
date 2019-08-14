@@ -1,3 +1,4 @@
+/*
 package com.xlaoy.user.config;
 
 import org.apache.curator.RetryPolicy;
@@ -10,9 +11,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+*/
 /**
  * Created by Administrator on 2018/11/2 0002.
- */
+ *//*
+
 @Configuration
 @EnableConfigurationProperties(ZookeeperProperties.class)
 public class CuratorConfig {
@@ -29,3 +32,4 @@ public class CuratorConfig {
     }
 
 }
+*/

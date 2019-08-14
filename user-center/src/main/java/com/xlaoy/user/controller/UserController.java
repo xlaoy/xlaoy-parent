@@ -94,16 +94,19 @@ public class UserController {
     }*/
 
 
-    @GetMapping(value = "/user/customer_age")
-    @ApiOperation(response = String.class, value = "获取名称")
-    public Integer customer() {
-        return userService.findByName();
-    }
 
-    @GetMapping(value = "/user/customer_save")
+    @GetMapping(value = "/user/aaa_save")
     @ApiOperation(response = String.class, value = "获取名称")
     public Integer save() {
-        return userService.save();
+        userService.aaaAave();
+        return 1;
+    }
+
+    @GetMapping(value = "/user/bbb_save")
+    @ApiOperation(response = String.class, value = "获取名称")
+    public Integer save1() {
+        userService.bbbSave();
+        return 1;
     }
 
 }

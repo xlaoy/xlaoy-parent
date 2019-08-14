@@ -1,3 +1,4 @@
+/*
 package com.xlaoy.user.service;
 
 import com.xlaoy.common.exception.BizException;
@@ -52,3 +53,4 @@ public class RequestUrlMessageListener implements AcknowledgingMessageListener<b
 
 
 }
+*/

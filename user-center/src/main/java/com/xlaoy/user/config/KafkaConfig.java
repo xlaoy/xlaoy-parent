@@ -1,3 +1,4 @@
+/*
 package com.xlaoy.user.config;
 
 import com.xlaoy.user.service.RequestUrlMessageListener;
@@ -12,9 +13,11 @@ import org.springframework.kafka.listener.KafkaMessageListenerContainer;
 import org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter;
 import org.springframework.kafka.listener.config.ContainerProperties;
 
+*/
 /**
  * Created by Administrator on 2018/12/21 0021.
- */
+ *//*
+
 @Configuration
 public class KafkaConfig {
 
@@ -37,7 +40,8 @@ public class KafkaConfig {
         return requestUrlMessageListenerContainer;
     }
 
-    /*@Bean
+    */
+/*@Bean
     public KafkaMessageListenerContainer testMessageListenerContainer() {
         ContainerProperties containerProperties = new ContainerProperties("test");
         containerProperties.setGroupId("test-1");
@@ -47,5 +51,7 @@ public class KafkaConfig {
         //containerProperties.setSyncCommits(false);
         KafkaMessageListenerContainer testMessageListenerContainer = new KafkaMessageListenerContainer(consumerFactory, containerProperties);
         return testMessageListenerContainer;
-    }*/
+    }*//*
+
 }
+*/

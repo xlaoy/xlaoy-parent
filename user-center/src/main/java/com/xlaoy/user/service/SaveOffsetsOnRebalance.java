@@ -1,3 +1,4 @@
+/*
 package com.xlaoy.user.service;
 
 import com.xlaoy.user.repository.IKafkaOffSetRepository;
@@ -32,10 +33,12 @@ public class SaveOffsetsOnRebalance implements ConsumerAwareRebalanceListener {
 
     }
 
-    /**
+    */
+/**
      * 分区分配完成后
      * 重新设置offset
-     */
+     *//*
+
     @Override
     public void onPartitionsAssigned(Consumer<?, ?> consumer, Collection<TopicPartition> partitions) {
         for(TopicPartition partition : partitions) {
@@ -45,3 +48,4 @@ public class SaveOffsetsOnRebalance implements ConsumerAwareRebalanceListener {
         }
     }
 }
+*/

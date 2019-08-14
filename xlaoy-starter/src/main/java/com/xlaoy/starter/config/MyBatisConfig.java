@@ -1,9 +1,5 @@
 package com.xlaoy.starter.config;
 
-import io.shardingjdbc.core.api.MasterSlaveDataSourceFactory;
-import io.shardingjdbc.core.api.ShardingDataSourceFactory;
-import io.shardingjdbc.core.api.config.MasterSlaveRuleConfiguration;
-import io.shardingjdbc.core.yaml.masterslave.YamlMasterSlaveRuleConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,12 +26,12 @@ import java.util.Map;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class}) //排除DataSourceConfiguratrion
+//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class}) //排除DataSourceConfiguratrion
 @MapperScan("com.xlaoy.**.dao")
-@EnableConfigurationProperties(ShardingJDBCProperties.class)
+//@EnableConfigurationProperties(ShardingJDBCProperties.class)
 public class MyBatisConfig {
 
-    @Autowired
+    /*@Autowired
     private ShardingJDBCProperties shardingJDBCProperties;
 
     @Bean("masterDataSource")
@@ -43,31 +39,31 @@ public class MyBatisConfig {
     @ConfigurationProperties(prefix = "spring.datasource.dbmaster")
     public DataSource masterDataSource() {
         return DataSourceBuilder.create().build();
-    }
+    }*/
 
-    @Bean(name = "slaveDataSource")
+    /*@Bean(name = "slaveDataSource")
     @Qualifier("slaveDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.dbslave")
     public DataSource slaveDataSource() {
         return DataSourceBuilder.create().build();
-    }
+    }*/
 
-    @Bean("dataSource")
+    /*@Bean("dataSource")
     @Qualifier("dataSource")
     @Primary
-    public DataSource dataSource(@Qualifier("masterDataSource") DataSource masterDataSource,
-                                 @Qualifier("slaveDataSource") DataSource slaveDataSource) throws SQLException {
+    public DataSource dataSource(@Qualifier("masterDataSource") DataSource masterDataSource
+                                 *//*@Qualifier("slaveDataSource") DataSource slaveDataSource*//*) throws SQLException {
         Map<String, DataSource> dataSourceMap = new HashMap<>();
         dataSourceMap.put("dbmaster", masterDataSource);
-        dataSourceMap.put("dbslave", slaveDataSource);
+        //dataSourceMap.put("dbslave", slaveDataSource);
         YamlMasterSlaveRuleConfiguration masterSlaveRule = shardingJDBCProperties.getMasterSlaveRule();
         MasterSlaveRuleConfiguration ruleConfiguration = masterSlaveRule.getMasterSlaveRuleConfiguration();
         Map<String, Object> configMap = masterSlaveRule.getConfigMap();
         return MasterSlaveDataSourceFactory.createDataSource(dataSourceMap, ruleConfiguration, configMap);
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public DataSourceTransactionManager transactionManager(@Qualifier("dataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
-    }
+    }*/
 }

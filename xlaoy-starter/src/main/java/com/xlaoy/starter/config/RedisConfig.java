@@ -1,3 +1,4 @@
+/*
 package com.xlaoy.starter.config;
 
 
@@ -25,9 +26,11 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 import java.time.Duration;
 
+*/
 /**
  * Created by Administrator on 2018/7/6 0006.
- */
+ *//*
+
 @Component
 @EnableCaching
 public class RedisConfig {
@@ -92,3 +95,4 @@ public class RedisConfig {
         };
     }
 }
+*/

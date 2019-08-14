@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 public interface ITradeController {
 
-    @Cacheable(value = "test01", keyGenerator = "keyGenerator")
+    //@Cacheable(value = "test01", keyGenerator = "keyGenerator")
     @GetMapping("/trade/test01/{userId}/{uid}")
     String test01(@PathVariable("userId")String userId, @PathVariable("uid")String uid);
 }

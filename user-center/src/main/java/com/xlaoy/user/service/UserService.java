@@ -86,27 +86,39 @@ public class UserService {
     }*/
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Autowired
     private CustomerDao customerDao;
 
 
-    public Integer findByName() {
-        return hahaha();
+
+
+    public void aaaAave() {
+        bbbSave();
     }
 
     @Transactional
-    public Integer save() {
-        Integer a = customerDao.findByName("haha").getAge();
+    public void bbbSave() {
         Customer customer = new Customer();
         customer.setName("nimahai" + new Random().nextInt(100));
         customer.setAge(12);
         customerDao.insert(customer);
-        return a;
+
+        throw new RuntimeException("hhhhhh");
     }
 
-    @Transactional
-    public Integer hahaha() {
-        return customerDao.findByName("haha").getAge();
-    }
 
 }

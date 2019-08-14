@@ -1,3 +1,4 @@
+/*
 
 package com.xlaoy.user.task;
 
@@ -7,9 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 
+*/
 /**
  * Created by Administrator on 2018/8/21 0021.
- */
+ *//*
+
 
 @Component
 public class UserDelayHAHATask implements DelayTask {
@@ -27,3 +30,4 @@ public class UserDelayHAHATask implements DelayTask {
     }
 }
 
+*/

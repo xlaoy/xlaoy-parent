@@ -1,5 +1,5 @@
 server:
-  port: ${outcfg.server.port}
+  port: 9000
   tomcat:
     uri-encoding: UTF-8
 
@@ -12,26 +12,39 @@ spring:
       charset: UTF-8
       force: true
   datasource:
-    dbmaster:
-      jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?serverTimezone=UTC&useSSL=false&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-      username: root
-      password: 123456
-      driver-class-name: net.sf.log4jdbc.DriverSpy #com.mysql.cj.jdbc.Driver
-      type: com.zaxxer.hikari.HikariDataSource
-      maxPoolSize: 20
-    dbslave:
-      jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3307/xlaoy?serverTimezone=UTC&useSSL=false&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-      username: root
-      password: 123456
-      driver-class-name: net.sf.log4jdbc.DriverSpy #com.mysql.cj.jdbc.Driver
-      type: com.zaxxer.hikari.HikariDataSource
-      maxPoolSize: 20
-  sharding-jdbc:
-    master-slave-rule:
-      name: dataSource
-      masterDataSourceName: dbmaster
-      slaveDataSourceNames: dbslave
-      loadBalanceAlgorithmType: ROUND_ROBIN # 配置从库选择策略，提供轮询与随机，这里选择用轮询
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?serverTimezone=UTC&useSSL=false&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+#  datasource:
+#    dbmaster:
+#      jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3306/xlaoy?serverTimezone=UTC&useSSL=false&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+#      username: root
+#      password: 123456
+#      driver-class-name: net.sf.log4jdbc.DriverSpy #com.mysql.cj.jdbc.Driver
+#      type: com.zaxxer.hikari.HikariDataSource
+#      maxPoolSize: 20
+#    dbslave:
+#      jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3307/xlaoy?serverTimezone=UTC&useSSL=false&useUnicode=true&autoReconnect=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+#      username: root
+#      password: 123456
+#      driver-class-name: net.sf.log4jdbc.DriverSpy #com.mysql.cj.jdbc.Driver
+#      type: com.zaxxer.hikari.HikariDataSource
+#      maxPoolSize: 20
+#  sharding-jdbc:
+#    master-slave-rule:
+#      name: dataSource
+#      masterDataSourceName: dbmaster
+#      slaveDataSourceNames: dbslave
+#      loadBalanceAlgorithmType: ROUND_ROBIN # 配置从库选择策略，提供轮询与随机，这里选择用轮询
 #  jpa:
 #    database: mysql
 #    hibernate:
@@ -53,18 +66,18 @@ spring:
 #    username: xlaoy
 #    password: 123456
 #    virtual-host: /xlaoy
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: xlaoy
-      username: xlaoy
-      password: ["1","2","3","4","5","6"]
-
-sharding:
-  jdbc:
-    datasource:
-      names: db_master,db_slave
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: xlaoy
+#      username: xlaoy
+#      password: ["1","2","3","4","5","6"]
+#
+#sharding:
+#  jdbc:
+#    datasource:
+#      names: db_master,db_slave
 
 #org.mybatis.spring.boot.autoconfigure.MybatisProperties
 mybatis:
